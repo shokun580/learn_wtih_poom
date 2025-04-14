@@ -5,7 +5,7 @@ module.exports = class user {
         this.department = [];
     }
 
-    async getAlluser(req, res) {
+    async getAlluser() {
         try {
             const user = new userModel();
             const response = await user.getAlluser();
