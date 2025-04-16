@@ -8,6 +8,7 @@ const user = new userCon();
 
 router.get('/user',user.getAlluser);
 router.get('/user/:user_id',user.getUser);
+router.get('/create',user.create)
 router.post('/createUser',user.createUser);
 router.put('/updateUser',user.updateUser);
 router.delete('/deleteUser/:user_id',user.deleteUser);

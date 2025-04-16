@@ -14,9 +14,10 @@ app.use(cors({
   origin: '*'
 }));
 
-app.use('/test' ,route);
-
-
 app.use(express.json());
 
 app.use(bodyParser.json());
+
+app.use('/test' ,route);
+
+

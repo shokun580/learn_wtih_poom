@@ -4,7 +4,6 @@ module.exports = class user {
     
     async getAlluser(req, res) {
         try {
-            console.log('เข้า');
             const user = new userModel();
             const response = await user.getAlluser();
             // console.log(response);
@@ -27,8 +26,12 @@ module.exports = class user {
     }
     async createUser(req, res) {
         try {
+           // console.log(req);
+            
             const user = new userModel();
             user.createUser(req.body);
+
+            return res.send("create user success");
         } catch (err) {
             console.log(err);
             throw err;
@@ -36,7 +39,7 @@ module.exports = class user {
     }
     async updateUser(req, res) {
         try {
-            const user = new userModel();
+            const user = new userModel(req.body);
             user.updateUser(req.body);
         } catch (err) {
             console.log(err);
@@ -53,4 +56,13 @@ module.exports = class user {
             throw err;
         }
     }   
+    async create(req, res) {
+        try {
+            const user = new userModel();
+            const response = await user.create();
+            res.send(response);
+        } catch (err) {
+            console.log(err);
+        }
+    }
 };

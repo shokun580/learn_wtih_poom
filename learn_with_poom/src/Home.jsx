@@ -3,12 +3,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 function Home() {
 
 
   const [users, setUser] = useState([]);
+  const [deleted , setDeleted] = useState(false);
 
   async function fetchData() {
     const response = await axios.get('http://localhost:3000/test/user')
@@ -21,12 +23,21 @@ function Home() {
   useEffect(() => {
     fetchData();
 
-  }, [])
+  }, [deleted])
 
+  async function Delete (user_id) {    
+    const response = await axios.delete(`http://localhost:3000/test/deleteUser/${user_id}`);
+    if(response.status === 200){
+      setDeleted(true);
+      fetchData();
+    }
+
+  }
 
 
   return (
     <>
+     <Link class="btn btn-success" to="/add">ADD</Link>
       <table class="table">
         <thead>
           <tr>
@@ -49,14 +60,14 @@ function Home() {
               <td>
                
                 <Link class="btn btn-primary" to="/update">edit</Link>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-danger" onClick={()=> Delete(user.user_id)}>Delete</button>
               </td>
             </tr>
           ))}
 
         </tbody>
       </table>
-      <Link class="btn btn-success" to="/add">ADD</Link>
+     
 
 
     </>

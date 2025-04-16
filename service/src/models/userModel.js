@@ -29,6 +29,8 @@ module.exports = class userModel {
   }
   async createUser(userModel){
     try{
+      console.log(userModel);
+      
       const response = await pool.query("INSERT INTO users (user_username, user_name_title, user_fullname, user_password, user_role, province) VALUES (?, ?, ?, ?, ? ,?)", [userModel.user_username, userModel.user_name_title, userModel.user_fullname, userModel.user_password, userModel.user_role , userModel.province]);
       //this.user = response[0][0];
       return response;
@@ -54,6 +56,15 @@ module.exports = class userModel {
       return response;
 
     }catch(error){
+      console.log(error);
+    }
+  }
+  async create() {
+    try {
+      const response = await pool.query("SELECT * FROM `provinces`");
+      this.user = response[0];
+      return this.user;
+    } catch (error) {
       console.log(error);
     }
   }
