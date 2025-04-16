@@ -51,6 +51,7 @@ module.exports = class user {
             const user = new userModel();
             const user_id = req.params.user_id;
             user.deleteUser(user_id);
+            return res.send("delete user success");
         } catch (err) {
             console.log(err);
             throw err;
