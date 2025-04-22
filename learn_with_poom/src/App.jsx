@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useState,useEffect } from 'react'
 import axios from 'axios'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './home'
+import Home from './Home'
 import Update from './update'
 import Add from './Add'
 

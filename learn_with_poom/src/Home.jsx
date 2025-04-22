@@ -17,7 +17,7 @@ function Home() {
   async function fetchData() {
     try {
       setIsLoading(true);
-      const response = await axios.get('http://localhost:3000/test/user')
+      const response = await axios.get('http://localhost:3000/test/user');
       console.log(users);
       setUser(response.data);
     } catch (error) {

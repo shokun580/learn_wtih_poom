@@ -7,8 +7,6 @@ module.exports = class userModel {
 
   async getAlluser() {
     try {
-      
-      
         const response = await pool.query("SELECT user_id, user_username ,user_fullname, user_role , pvc_name FROM users left join provinces on pvc_id = province ");
         console.log(response[0]);
         this.user = response[0];
